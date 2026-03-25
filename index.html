@@ -1,1 +1,751 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digital Transformation Proposal — Stride ERP × DOTxLabs</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+--stride-deep:#0A2540;
+--stride-blue:#1B6B93;
+--stride-teal:#2EC4B6;
+--stride-light:#E8F4F8;
+--stride-ice:#F0FAFB;
+--gold:#C9A84C;
+--gold-light:#FDF6E8;
+--text-primary:#0A2540;
+--text-secondary:#4A6375;
+--text-muted:#8599A9;
+--bg-white:#FFFFFF;
+--bg-surface:#F7FAFB;
+--border-light:#E2EDF1;
+--success:#2EC4B6;
+--danger:#E85D5D;
+--font-display:'DM Serif Display',Georgia,serif;
+--font-body:'Plus Jakarta Sans','Segoe UI',sans-serif;
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:var(--font-body);color:var(--text-primary);background:var(--bg-white);line-height:1.7;overflow-x:hidden}
+ 
+/* Scroll reveal */
+.reveal{opacity:0;transform:translateY(40px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:0.1s}
+.reveal-delay-2{transition-delay:0.2s}
+.reveal-delay-3{transition-delay:0.3s}
+.reveal-delay-4{transition-delay:0.4s}
+ 
+/* Layout */
+.container{max-width:1100px;margin:0 auto;padding:0 2rem}
+ 
+/* Hero */
+.hero{min-height:100vh;display:flex;align-items:center;position:relative;background:linear-gradient(155deg,var(--stride-deep) 0%,#0F3654 40%,var(--stride-blue) 100%);overflow:hidden}
+.hero::before{content:'';position:absolute;top:-30%;right:-20%;width:800px;height:800px;border-radius:50%;background:radial-gradient(circle,rgba(46,196,182,0.12) 0%,transparent 70%);pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:-40%;left:-10%;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(27,107,147,0.2) 0%,transparent 70%);pointer-events:none}
+.hero-content{position:relative;z-index:1;padding:4rem 0}
+.hero-badge{display:inline-flex;align-items:center;gap:0.5rem;padding:0.5rem 1.2rem;border:1px solid rgba(46,196,182,0.3);border-radius:100px;color:var(--stride-teal);font-size:0.8rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:2rem;backdrop-filter:blur(10px);background:rgba(46,196,182,0.06)}
+.hero-badge span{width:6px;height:6px;border-radius:50%;background:var(--stride-teal);animation:pulse-dot 2s infinite}
+@keyframes pulse-dot{0%,100%{opacity:1}50%{opacity:0.3}}
+.hero h1{font-family:var(--font-display);font-size:clamp(2.8rem,6vw,4.5rem);color:#fff;line-height:1.1;margin-bottom:1.5rem;font-weight:400}
+.hero h1 em{font-style:italic;color:var(--stride-teal)}
+.hero-sub{font-size:1.15rem;color:rgba(255,255,255,0.65);max-width:560px;line-height:1.8;margin-bottom:2.5rem;font-weight:300}
+.hero-meta{display:flex;gap:3rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,0.1)}
+.hero-meta-item{display:flex;flex-direction:column;gap:0.25rem}
+.hero-meta-label{font-size:0.75rem;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.1em;font-weight:500}
+.hero-meta-value{font-size:0.95rem;color:rgba(255,255,255,0.85);font-weight:500}
+ 
+/* Section styling */
+section{padding:6rem 0}
+section.alt-bg{background:var(--bg-surface)}
+.section-label{font-size:0.75rem;text-transform:uppercase;letter-spacing:0.15em;color:var(--stride-teal);font-weight:600;margin-bottom:0.75rem}
+.section-title{font-family:var(--font-display);font-size:clamp(2rem,4vw,3rem);color:var(--text-primary);line-height:1.2;margin-bottom:1rem}
+.section-desc{font-size:1.05rem;color:var(--text-secondary);max-width:620px;line-height:1.8;margin-bottom:3rem}
+ 
+/* Outcome cards */
+.outcomes-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5rem}
+.outcome-card{background:var(--bg-white);border:1px solid var(--border-light);border-radius:16px;padding:2rem;transition:transform 0.3s,box-shadow 0.3s}
+.outcome-card:hover{transform:translateY(-4px);box-shadow:0 20px 60px rgba(10,37,64,0.08)}
+.outcome-icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:1.25rem}
+.outcome-icon.blue{background:rgba(27,107,147,0.1);color:var(--stride-blue)}
+.outcome-icon.teal{background:rgba(46,196,182,0.1);color:var(--stride-teal)}
+.outcome-icon.gold{background:rgba(201,168,76,0.1);color:var(--gold)}
+.outcome-icon.deep{background:rgba(10,37,64,0.08);color:var(--stride-deep)}
+.outcome-card h3{font-size:1.05rem;font-weight:600;margin-bottom:0.5rem;color:var(--text-primary)}
+.outcome-card p{font-size:0.9rem;color:var(--text-secondary);line-height:1.7}
+ 
+/* Before/After */
+.ba-container{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:2rem}
+@media(max-width:768px){.ba-container{grid-template-columns:1fr}}
+.ba-panel{border-radius:16px;overflow:hidden;border:1px solid var(--border-light)}
+.ba-label{padding:0.75rem 1.5rem;font-size:0.8rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em}
+.ba-label.before{background:rgba(232,93,93,0.08);color:var(--danger)}
+.ba-label.after{background:rgba(46,196,182,0.08);color:var(--stride-teal)}
+.ba-content{padding:1.5rem;min-height:380px;position:relative}
+.ba-content.before-content{background:#f8f8f8}
+.ba-content.after-content{background:var(--stride-ice)}
+ 
+/* Before site mockup */
+.mock-old{font-family:Arial,sans-serif}
+.mock-old-nav{background:#336;padding:8px 12px;display:flex;gap:6px;border-radius:4px 4px 0 0}
+.mock-old-nav span{display:block;width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.3)}
+.mock-old-header{background:#e8e8e8;padding:12px;margin-top:8px;border-radius:4px}
+.mock-old-header h4{font-size:11px;color:#666;font-weight:normal}
+.mock-old-header h3{font-size:14px;color:#333;margin-top:4px}
+.mock-old-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:10px}
+.mock-old-box{background:#e0e0e0;border-radius:4px;height:50px;display:flex;align-items:center;justify-content:center;font-size:8px;color:#999}
+.mock-old-issues{margin-top:16px;display:flex;flex-direction:column;gap:6px}
+.mock-old-issue{display:flex;align-items:center;gap:8px;font-size:11px;color:var(--danger);background:rgba(232,93,93,0.06);padding:6px 10px;border-radius:6px;border-left:3px solid var(--danger)}
+ 
+/* After site mockup */
+.mock-new{font-family:var(--font-body)}
+.mock-new-nav{background:var(--stride-deep);padding:10px 14px;display:flex;align-items:center;justify-content:space-between;border-radius:8px 8px 0 0}
+.mock-new-logo{color:var(--stride-teal);font-weight:700;font-size:11px;letter-spacing:0.05em}
+.mock-new-links{display:flex;gap:12px}
+.mock-new-links span{font-size:9px;color:rgba(255,255,255,0.5)}
+.mock-new-cta{font-size:8px;background:var(--stride-teal);color:var(--stride-deep);padding:3px 10px;border-radius:100px;font-weight:600}
+.mock-new-hero{background:linear-gradient(135deg,var(--stride-deep),var(--stride-blue));padding:20px 14px;margin-top:1px}
+.mock-new-hero h3{font-family:var(--font-display);color:#fff;font-size:15px;font-weight:400;line-height:1.3}
+.mock-new-hero p{color:rgba(255,255,255,0.6);font-size:9px;margin-top:6px;line-height:1.5}
+.mock-new-hero-btn{display:inline-block;margin-top:10px;padding:5px 14px;background:var(--stride-teal);color:var(--stride-deep);font-size:9px;font-weight:600;border-radius:6px}
+.mock-new-features{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:12px 14px}
+.mock-new-feat{background:#fff;border:1px solid var(--border-light);border-radius:8px;padding:10px;text-align:center}
+.mock-new-feat-icon{width:24px;height:24px;border-radius:6px;background:rgba(46,196,182,0.12);margin:0 auto 6px;display:flex;align-items:center;justify-content:center;font-size:10px}
+.mock-new-feat h5{font-size:8px;font-weight:600;color:var(--text-primary)}
+.mock-new-wins{margin-top:12px;display:flex;flex-direction:column;gap:6px}
+.mock-new-win{display:flex;align-items:center;gap:8px;font-size:11px;color:var(--stride-teal);background:rgba(46,196,182,0.06);padding:6px 10px;border-radius:6px;border-left:3px solid var(--stride-teal)}
+ 
+/* ROI Section */
+.roi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.25rem;margin-top:2rem}
+.roi-card{background:var(--bg-white);border:1px solid var(--border-light);border-radius:14px;padding:1.75rem;text-align:center;transition:transform 0.3s}
+.roi-card:hover{transform:translateY(-3px)}
+.roi-metric{font-family:var(--font-display);font-size:2.2rem;color:var(--stride-teal);margin-bottom:0.25rem}
+.roi-label{font-size:0.85rem;color:var(--text-secondary);font-weight:500;margin-bottom:0.75rem}
+.roi-detail{font-size:0.78rem;color:var(--text-muted);line-height:1.6}
+.roi-note{margin-top:2rem;padding:1.25rem;background:var(--stride-ice);border-radius:12px;border-left:3px solid var(--stride-teal);font-size:0.85rem;color:var(--text-secondary);line-height:1.7}
+ 
+/* Scope phases */
+.phases{display:flex;flex-direction:column;gap:1rem;margin-top:2rem}
+.phase{border:1px solid var(--border-light);border-radius:14px;overflow:hidden;background:var(--bg-white);transition:box-shadow 0.3s}
+.phase:hover{box-shadow:0 8px 30px rgba(10,37,64,0.06)}
+.phase-header{padding:1.25rem 1.5rem;display:flex;align-items:center;gap:1rem;cursor:pointer;user-select:none}
+.phase-num{width:36px;height:36px;border-radius:10px;background:var(--stride-deep);color:#fff;display:flex;align-items:center;justify-content:center;font-size:0.85rem;font-weight:700;flex-shrink:0}
+.phase-info{flex:1}
+.phase-info h3{font-size:1rem;font-weight:600;color:var(--text-primary)}
+.phase-info span{font-size:0.8rem;color:var(--text-muted)}
+.phase-arrow{width:28px;height:28px;border-radius:50%;border:1px solid var(--border-light);display:flex;align-items:center;justify-content:center;transition:transform 0.3s,background 0.3s;font-size:0.7rem;color:var(--text-muted)}
+.phase.open .phase-arrow{transform:rotate(180deg);background:var(--stride-ice);color:var(--stride-teal)}
+.phase-body{max-height:0;overflow:hidden;transition:max-height 0.5s cubic-bezier(0.25,0.46,0.45,0.94)}
+.phase.open .phase-body{max-height:600px}
+.phase-body-inner{padding:0 1.5rem 1.5rem;border-top:1px solid var(--border-light);padding-top:1.25rem;display:flex;flex-direction:column;gap:0.5rem}
+.phase-outcome{font-size:0.92rem;color:var(--text-secondary);line-height:1.7;padding-left:1rem;position:relative}
+.phase-outcome::before{content:'';position:absolute;left:0;top:10px;width:5px;height:5px;border-radius:50%;background:var(--stride-teal)}
+ 
+/* Timeline */
+.timeline-visual{display:grid;grid-template-columns:180px repeat(3,1fr);gap:0;margin-top:2.5rem;border-radius:14px;overflow:hidden;border:1px solid var(--border-light)}
+.tl-header{background:var(--stride-deep);color:#fff;padding:0.75rem 1rem;font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;text-align:center}
+.tl-header:first-child{text-align:left}
+.tl-row{display:contents}
+.tl-label{padding:0.75rem 1rem;font-size:0.85rem;font-weight:500;color:var(--text-primary);background:var(--bg-white);border-bottom:1px solid var(--border-light);display:flex;align-items:center}
+.tl-cell{padding:0.75rem;border-bottom:1px solid var(--border-light);background:var(--bg-white);display:flex;align-items:center;justify-content:center}
+.tl-active{background:rgba(46,196,182,0.08)}
+.tl-bar{width:100%;height:8px;border-radius:100px;background:linear-gradient(90deg,var(--stride-teal),var(--stride-blue))}
+ 
+/* Pricing */
+.pricing-tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2.5rem}
+@media(max-width:900px){.pricing-tiers{grid-template-columns:1fr}}
+.tier{border:1.5px solid var(--border-light);border-radius:18px;padding:2rem;position:relative;transition:transform 0.3s,box-shadow 0.3s,border-color 0.3s;background:var(--bg-white);cursor:pointer}
+.tier:hover{transform:translateY(-4px);box-shadow:0 20px 60px rgba(10,37,64,0.1)}
+.tier.selected{border-color:var(--stride-teal);box-shadow:0 20px 60px rgba(46,196,182,0.15)}
+.tier.featured{border-color:var(--stride-blue)}
+.tier.featured::before{content:'Recommended';position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--stride-blue);color:#fff;font-size:0.7rem;font-weight:600;padding:4px 16px;border-radius:100px;text-transform:uppercase;letter-spacing:0.08em}
+.tier-name{font-family:var(--font-display);font-size:1.5rem;color:var(--text-primary);margin-bottom:0.25rem}
+.tier-desc{font-size:0.82rem;color:var(--text-muted);margin-bottom:1.5rem;line-height:1.6}
+.tier-price{font-family:var(--font-display);font-size:2.5rem;color:var(--stride-deep);margin-bottom:0.25rem}
+.tier-price-note{font-size:0.78rem;color:var(--text-muted);margin-bottom:1.5rem}
+.tier-items{display:flex;flex-direction:column;gap:0.6rem;padding-top:1.25rem;border-top:1px solid var(--border-light)}
+.tier-item{display:flex;align-items:center;gap:0.6rem;font-size:0.88rem;color:var(--text-secondary)}
+.tier-item .check{color:var(--stride-teal);font-weight:700;font-size:1rem}
+.tier-item .x{color:var(--text-muted);font-size:0.8rem}
+.tier-item.excluded{opacity:0.4}
+.tier-retainer{margin-top:1rem;padding:0.6rem 0.8rem;background:var(--gold-light);border-radius:8px;font-size:0.78rem;color:var(--gold);font-weight:500;text-align:center}
+ 
+/* Custom builder */
+.builder{margin-top:3rem;background:var(--bg-white);border:1px solid var(--border-light);border-radius:18px;padding:2rem;position:relative}
+.builder h3{font-family:var(--font-display);font-size:1.4rem;margin-bottom:0.5rem}
+.builder-desc{font-size:0.9rem;color:var(--text-secondary);margin-bottom:1.5rem}
+.builder-items{display:flex;flex-direction:column;gap:0.75rem}
+.builder-item{display:flex;align-items:center;justify-content:space-between;padding:1rem 1.25rem;border:1.5px solid var(--border-light);border-radius:12px;cursor:pointer;transition:border-color 0.2s,background 0.2s;user-select:none}
+.builder-item:hover{border-color:var(--stride-teal);background:var(--stride-ice)}
+.builder-item.active{border-color:var(--stride-teal);background:rgba(46,196,182,0.04)}
+.builder-item-left{display:flex;align-items:center;gap:1rem}
+.builder-toggle{width:22px;height:22px;border-radius:6px;border:2px solid var(--border-light);display:flex;align-items:center;justify-content:center;transition:all 0.2s;flex-shrink:0;font-size:0.75rem;color:transparent}
+.builder-item.active .builder-toggle{background:var(--stride-teal);border-color:var(--stride-teal);color:#fff}
+.builder-item-name{font-size:0.95rem;font-weight:500;color:var(--text-primary)}
+.builder-item-price{font-size:0.95rem;font-weight:600;color:var(--stride-deep);white-space:nowrap}
+.builder-total{display:flex;align-items:center;justify-content:space-between;margin-top:1.5rem;padding:1.25rem 1.5rem;background:var(--stride-deep);border-radius:12px;color:#fff}
+.builder-total-label{font-size:1rem;font-weight:500}
+.builder-total-amount{font-family:var(--font-display);font-size:2rem}
+ 
+/* Payment options */
+.payment-options{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:2rem}
+@media(max-width:800px){.payment-options{grid-template-columns:1fr}}
+.payment-card{border:1.5px solid var(--border-light);border-radius:14px;padding:1.5rem;cursor:pointer;transition:all 0.2s;position:relative}
+.payment-card:hover{border-color:var(--stride-blue)}
+.payment-card.selected{border-color:var(--stride-teal);background:var(--stride-ice)}
+.payment-card.has-badge::after{content:'Save 10%';position:absolute;top:-10px;right:16px;background:var(--gold);color:#fff;font-size:0.68rem;font-weight:600;padding:3px 10px;border-radius:100px;text-transform:uppercase;letter-spacing:0.05em}
+.payment-name{font-weight:600;font-size:0.95rem;margin-bottom:0.5rem;color:var(--text-primary)}
+.payment-detail{font-size:0.82rem;color:var(--text-secondary);line-height:1.7}
+.payment-breakdown{margin-top:0.75rem;display:flex;flex-direction:column;gap:0.3rem}
+.payment-breakdown-row{display:flex;justify-content:space-between;font-size:0.8rem;color:var(--text-muted)}
+ 
+/* CTA */
+.cta-section{background:linear-gradient(155deg,var(--stride-deep) 0%,var(--stride-blue) 100%);padding:5rem 0;text-align:center;position:relative;overflow:hidden}
+.cta-section::before{content:'';position:absolute;top:-50%;right:-20%;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(46,196,182,0.1) 0%,transparent 70%)}
+.cta-section h2{font-family:var(--font-display);color:#fff;font-size:clamp(2rem,4vw,2.8rem);margin-bottom:1rem;position:relative}
+.cta-section p{color:rgba(255,255,255,0.6);font-size:1rem;margin-bottom:2rem;position:relative}
+.cta-btn{display:inline-flex;align-items:center;gap:0.6rem;padding:1rem 2.5rem;background:var(--stride-teal);color:var(--stride-deep);font-size:1rem;font-weight:600;border:none;border-radius:100px;cursor:pointer;transition:transform 0.2s,box-shadow 0.2s;text-decoration:none;position:relative}
+.cta-btn:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(46,196,182,0.3)}
+.cta-validity{margin-top:2rem;font-size:0.8rem;color:rgba(255,255,255,0.35);position:relative}
+ 
+/* Footer */
+.proposal-footer{padding:3rem 0;text-align:center;border-top:1px solid var(--border-light)}
+.footer-brand{font-weight:700;color:var(--stride-deep);font-size:0.95rem;margin-bottom:0.25rem;letter-spacing:0.02em}
+.footer-contact{font-size:0.85rem;color:var(--text-muted)}
+ 
+/* Mobile */
+@media(max-width:768px){
+  .hero-meta{flex-direction:column;gap:1.5rem}
+  .outcomes-grid{grid-template-columns:1fr}
+  .roi-grid{grid-template-columns:1fr 1fr}
+  .pricing-tiers{grid-template-columns:1fr}
+  .timeline-visual{display:none}
+  .payment-options{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+ 
+<!-- ============ HERO ============ -->
+<section class="hero">
+<div class="container hero-content">
+  <div class="hero-badge reveal"><span></span> Proposal — March 2026</div>
+  <h1 class="reveal reveal-delay-1">Your product is <em>powerful.</em><br>Your digital presence should be too.</h1>
+  <p class="hero-sub reveal reveal-delay-2">A comprehensive digital transformation proposal for Stride ERP — from brand identity to a modern website, SEO, social media strategy, and sustainable growth.</p>
+  <div class="hero-meta reveal reveal-delay-3">
+    <div class="hero-meta-item">
+      <span class="hero-meta-label">Prepared for</span>
+      <span class="hero-meta-value">The Stride ERP Team</span>
+    </div>
+    <div class="hero-meta-item">
+      <span class="hero-meta-label">Prepared by</span>
+      <span class="hero-meta-value">David Ajai — DOTxLabs</span>
+    </div>
+  </div>
+</div>
+</section>
+ 
+<!-- ============ OUTCOMES ============ -->
+<section>
+<div class="container">
+  <p class="section-label reveal">What we will achieve</p>
+  <h2 class="section-title reveal reveal-delay-1">Four outcomes that drive sales</h2>
+  <p class="section-desc reveal reveal-delay-2">Every element of this engagement is designed to move one needle: qualified leads into your sales pipeline. Here is how each workstream contributes.</p>
+  <div class="outcomes-grid">
+    <div class="outcome-card reveal">
+      <div class="outcome-icon blue">&#9670;</div>
+      <h3>Brand that commands trust</h3>
+      <p>A cohesive visual identity that positions Stride ERP as a premium platform — so prospects trust you before they ever speak to sales.</p>
+    </div>
+    <div class="outcome-card reveal reveal-delay-1">
+      <div class="outcome-icon teal">&#9651;</div>
+      <h3>Website that converts</h3>
+      <p>A modern, fast, mobile-first site that guides visitors from first impression to demo request or free trial — not just a brochure.</p>
+    </div>
+    <div class="outcome-card reveal reveal-delay-2">
+      <div class="outcome-icon gold">&#9673;</div>
+      <h3>Search visibility that captures demand</h3>
+      <p>When someone in Lagos or Abuja searches for ERP software, Stride appears. Organic traffic that finds you when they are ready to buy.</p>
+    </div>
+    <div class="outcome-card reveal reveal-delay-3">
+      <div class="outcome-icon deep">&#9674;</div>
+      <h3>Social presence that builds pipeline</h3>
+      <p>LinkedIn and Instagram content that turns your 3,900+ followers into demo requests through strategic thought leadership and social proof.</p>
+    </div>
+  </div>
+</div>
+</section>
+ 
+<!-- ============ BEFORE / AFTER ============ -->
+<section class="alt-bg">
+<div class="container">
+  <p class="section-label reveal">The transformation</p>
+  <h2 class="section-title reveal reveal-delay-1">What your digital presence could look like</h2>
+  <p class="section-desc reveal reveal-delay-2">A side-by-side comparison of where Stride ERP's website is today versus where we will take it.</p>
+  <div class="ba-container reveal reveal-delay-3">
+    <!-- Before -->
+    <div class="ba-panel">
+      <div class="ba-label before">Current site</div>
+      <div class="ba-content before-content">
+        <div class="mock-old">
+          <div class="mock-old-nav"><span></span><span></span><span></span></div>
+          <div class="mock-old-header">
+            <h4>STRIDE ERP - The Future of Business Automation</h4>
+            <h3 style="margin-top:6px">Business Made Simple</h3>
+          </div>
+          <div class="mock-old-grid">
+            <div class="mock-old-box">HRM</div>
+            <div class="mock-old-box">CRM</div>
+            <div class="mock-old-box">Assets</div>
+            <div class="mock-old-box">Acctg</div>
+            <div class="mock-old-box">Teams</div>
+            <div class="mock-old-box">Sales</div>
+            <div class="mock-old-box">Projects</div>
+            <div class="mock-old-box">Payroll</div>
+          </div>
+          <div class="mock-old-issues">
+            <div class="mock-old-issue">&#10005; &nbsp;12+ nested navigation items</div>
+            <div class="mock-old-issue">&#10005; &nbsp;Not mobile optimized</div>
+            <div class="mock-old-issue">&#10005; &nbsp;No clear conversion path</div>
+            <div class="mock-old-issue">&#10005; &nbsp;Outdated visual design</div>
+            <div class="mock-old-issue">&#10005; &nbsp;No demo booking or lead capture</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- After -->
+    <div class="ba-panel">
+      <div class="ba-label after">After DOTxLabs</div>
+      <div class="ba-content after-content">
+        <div class="mock-new">
+          <div class="mock-new-nav">
+            <span class="mock-new-logo">STRIDE ERP</span>
+            <div class="mock-new-links">
+              <span>Products</span><span>Solutions</span><span>Pricing</span>
+              <span class="mock-new-cta">Start free trial</span>
+            </div>
+          </div>
+          <div class="mock-new-hero">
+            <h3>Automate your<br>business operations</h3>
+            <p>The all-in-one ERP platform built for African SMEs. HR, payroll, accounting, CRM — one system.</p>
+            <span class="mock-new-hero-btn">Start free trial →</span>
+          </div>
+          <div class="mock-new-features">
+            <div class="mock-new-feat"><div class="mock-new-feat-icon">&#9670;</div><h5>HR & Payroll</h5></div>
+            <div class="mock-new-feat"><div class="mock-new-feat-icon">&#9651;</div><h5>CRM & Sales</h5></div>
+            <div class="mock-new-feat"><div class="mock-new-feat-icon">&#9673;</div><h5>Accounting</h5></div>
+          </div>
+          <div class="mock-new-wins">
+            <div class="mock-new-win">&#10003; &nbsp;Clean, focused navigation</div>
+            <div class="mock-new-win">&#10003; &nbsp;Mobile-first responsive</div>
+            <div class="mock-new-win">&#10003; &nbsp;Clear trial and demo CTAs</div>
+            <div class="mock-new-win">&#10003; &nbsp;Modern, trustworthy design</div>
+            <div class="mock-new-win">&#10003; &nbsp;SEO-optimized structure</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+ 
+<!-- ============ ROI ============ -->
+<section>
+<div class="container">
+  <p class="section-label reveal">The business case</p>
+  <h2 class="section-title reveal reveal-delay-1">Conservative revenue impact</h2>
+  <p class="section-desc reveal reveal-delay-2">These projections are based on industry benchmarks for B2B SaaS companies making similar digital improvements. All numbers are deliberately conservative.</p>
+  <div class="roi-grid">
+    <div class="roi-card reveal">
+      <div class="roi-metric">5→25</div>
+      <div class="roi-label">Demo requests per month</div>
+      <div class="roi-detail">A modern site with clear CTAs, demo booking, and optimized conversion flow typically increases demo requests 3-5x for B2B SaaS.</div>
+    </div>
+    <div class="roi-card reveal reveal-delay-1">
+      <div class="roi-metric">+40%</div>
+      <div class="roi-label">Mobile visitor retention</div>
+      <div class="roi-detail">Over 60% of African web traffic is mobile. A mobile-optimized site recovers visitors currently bouncing from the desktop-first layout.</div>
+    </div>
+    <div class="roi-card reveal reveal-delay-2">
+      <div class="roi-metric">150+</div>
+      <div class="roi-label">Monthly organic visitors (6-month target)</div>
+      <div class="roi-detail">Targeting high-intent keywords like "ERP software Nigeria" and industry-specific terms that currently have low competition.</div>
+    </div>
+    <div class="roi-card reveal reveal-delay-3">
+      <div class="roi-metric">1/5th</div>
+      <div class="roi-label">Cost per lead vs. paid ads</div>
+      <div class="roi-detail">Organic SEO leads cost roughly 80% less than paid advertising over 12 months, while converting at a higher rate.</div>
+    </div>
+    <div class="roi-card reveal reveal-delay-4">
+      <div class="roi-metric">+15%</div>
+      <div class="roi-label">Trial-to-paid conversion lift</div>
+      <div class="roi-detail">Better onboarding flow, clearer pricing, and case studies help prospects self-qualify, improving trial conversion rates.</div>
+    </div>
+  </div>
+  <div class="roi-note reveal">All projections are conservative estimates based on industry benchmarks for B2B SaaS companies in emerging markets. Actual results will depend on market conditions, sales team capacity, and product-market fit. We recommend measuring against these benchmarks at 3, 6, and 12 months post-launch.</div>
+</div>
+</section>
+ 
+<!-- ============ SCOPE ============ -->
+<section class="alt-bg">
+<div class="container">
+  <p class="section-label reveal">Scope of work</p>
+  <h2 class="section-title reveal reveal-delay-1">What we deliver — and what it achieves</h2>
+  <p class="section-desc reveal reveal-delay-2">Five integrated workstreams, each building on the last. Click any phase to see the outcomes.</p>
+  <div class="phases">
+    <div class="phase reveal" data-phase>
+      <div class="phase-header">
+        <div class="phase-num">1</div>
+        <div class="phase-info"><h3>Brand identity and guidelines</h3><span>Phase 1 &nbsp;·&nbsp; $700</span></div>
+        <div class="phase-arrow">▼</div>
+      </div>
+      <div class="phase-body"><div class="phase-body-inner">
+        <div class="phase-outcome">Modernized logo and visual identity that positions Stride ERP as a premium market leader, not a startup</div>
+        <div class="phase-outcome">Complete brand system — colors, typography, and guidelines — so your social team can produce consistent content without guessing</div>
+        <div class="phase-outcome">Ready-to-use social media templates and pitch deck template for immediate use across LinkedIn, Instagram, and sales conversations</div>
+      </div></div>
+    </div>
+    <div class="phase reveal reveal-delay-1" data-phase>
+      <div class="phase-header">
+        <div class="phase-num">2</div>
+        <div class="phase-info"><h3>Website modernization</h3><span>Phase 2 &nbsp;·&nbsp; $4,500</span></div>
+        <div class="phase-arrow">▼</div>
+      </div>
+      <div class="phase-body"><div class="phase-body-inner">
+        <div class="phase-outcome">Complete redesign and rebuild on Next.js 14 — fast, modern, SEO-friendly, and deployed on world-class infrastructure via Vercel</div>
+        <div class="phase-outcome">Simplified navigation from 12+ nested items to a clean, intuitive structure that guides visitors to the right product information</div>
+        <div class="phase-outcome">Conversion-optimized pricing page, demo booking flow, and free trial funnel designed to turn visitors into qualified leads</div>
+        <div class="phase-outcome">Dedicated product pages, case studies section, and a prominent SME Accelerator Project page that tells Stride's differentiating story</div>
+        <div class="phase-outcome">Mobile-first responsive design — critical when 60%+ of your African audience browses on their phone</div>
+      </div></div>
+    </div>
+    <div class="phase reveal reveal-delay-2" data-phase>
+      <div class="phase-header">
+        <div class="phase-num">3</div>
+        <div class="phase-info"><h3>SEO optimization</h3><span>Phase 3 &nbsp;·&nbsp; $1,000</span></div>
+        <div class="phase-arrow">▼</div>
+      </div>
+      <div class="phase-body"><div class="phase-body-inner">
+        <div class="phase-outcome">Technical SEO foundation — site speed, indexation, schema markup — so Google can properly crawl and rank your pages</div>
+        <div class="phase-outcome">Keyword strategy targeting high-intent terms ("ERP software Nigeria," "HR management software Africa") where competition is low and buyer intent is high</div>
+        <div class="phase-outcome">Programmatic landing pages for each industry you serve (healthcare, real estate, fintech) — capturing specific search demand that generic competitors miss</div>
+        <div class="phase-outcome">Content plan and link building strategy leveraging the SME Accelerator Project's press coverage for organic backlinks</div>
+      </div></div>
+    </div>
+    <div class="phase reveal reveal-delay-3" data-phase>
+      <div class="phase-header">
+        <div class="phase-num">4</div>
+        <div class="phase-info"><h3>Social media strategy</h3><span>Ongoing &nbsp;·&nbsp; $500</span></div>
+        <div class="phase-arrow">▼</div>
+      </div>
+      <div class="phase-body"><div class="phase-body-inner">
+        <div class="phase-outcome">Audit of your LinkedIn (3,900+ followers), Instagram, and X presence — identifying what is driving engagement and what is wasting effort</div>
+        <div class="phase-outcome">Content strategy that shifts from feature announcements to a conversion-focused mix: thought leadership, client wins, and direct-response content</div>
+        <div class="phase-outcome">Monthly content calendar and branded templates so your team can execute consistently without bottlenecks</div>
+      </div></div>
+    </div>
+    <div class="phase reveal reveal-delay-4" data-phase>
+      <div class="phase-header">
+        <div class="phase-num">5</div>
+        <div class="phase-info"><h3>Competitor research and positioning</h3><span>Phase 1 &nbsp;·&nbsp; $500</span></div>
+        <div class="phase-arrow">▼</div>
+      </div>
+      <div class="phase-body"><div class="phase-body-inner">
+        <div class="phase-outcome">Deep analysis of Zoho, Odoo, Sage, SAP Business One, and local African ERP providers — their messaging, pricing, and weaknesses</div>
+        <div class="phase-outcome">Clear positioning strategy that leverages Stride's dual Canada-Nigeria presence and SME Accelerator Project as differentiators no competitor can copy</div>
+        <div class="phase-outcome">SEO-optimized comparison pages targeting competitor brand keywords — capturing prospects actively evaluating alternatives</div>
+      </div></div>
+    </div>
+  </div>
+</div>
+</section>
+ 
+<!-- ============ TIMELINE ============ -->
+<section>
+<div class="container">
+  <p class="section-label reveal">Timeline</p>
+  <h2 class="section-title reveal reveal-delay-1">3-week delivery sprint</h2>
+  <p class="section-desc reveal reveal-delay-2">Core delivery in a focused 3-week sprint. SEO and social media continue as ongoing retainer work after launch.</p>
+  <div class="timeline-visual reveal reveal-delay-3">
+    <div class="tl-header">Phase</div>
+    <div class="tl-header">Phase 1</div>
+    <div class="tl-header">Phase 2</div>
+    <div class="tl-header">Phase 3</div>
+ 
+    <div class="tl-row">
+      <div class="tl-label">Brand identity</div>
+      <div class="tl-cell tl-active"><div class="tl-bar"></div></div>
+      <div class="tl-cell"></div><div class="tl-cell"></div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-label">Competitor research</div>
+      <div class="tl-cell tl-active"><div class="tl-bar"></div></div>
+      <div class="tl-cell"></div><div class="tl-cell"></div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-label">Website build</div>
+      <div class="tl-cell"></div>
+      <div class="tl-cell tl-active"><div class="tl-bar"></div></div>
+      <div class="tl-cell tl-active"><div class="tl-bar"></div></div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-label">Analytics setup</div>
+      <div class="tl-cell"></div>
+      <div class="tl-cell"></div>
+      <div class="tl-cell tl-active"><div class="tl-bar"></div></div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-label" style="font-style:italic;color:var(--text-muted)">SEO + Social</div>
+      <div class="tl-cell" style="grid-column:span 3;text-align:center;font-size:0.8rem;color:var(--stride-teal);font-weight:500;border-bottom:1px solid var(--border-light);background:rgba(46,196,182,0.04)">→ &nbsp;Ongoing after launch (retainer)</div>
+    </div>
+  </div>
+</div>
+</section>
+ 
+<!-- ============ PRICING ============ -->
+<section class="alt-bg" id="pricing">
+<div class="container">
+  <p class="section-label reveal">Investment</p>
+  <h2 class="section-title reveal reveal-delay-1">Choose your path forward</h2>
+  <p class="section-desc reveal reveal-delay-2">Three packages designed around different levels of ambition. Or build your own below.</p>
+ 
+  <div class="pricing-tiers reveal reveal-delay-3">
+    <!-- Foundation -->
+    <div class="tier" data-tier="foundation" onclick="selectTier('foundation')">
+      <div class="tier-name">Foundation</div>
+      <div class="tier-desc">Brand, website, and SEO — the essential digital foundation.</div>
+      <div class="tier-price">$6,200</div>
+      <div class="tier-price-note">One-time project fee</div>
+      <div class="tier-items">
+        <div class="tier-item"><span class="check">&#10003;</span> Brand identity and guidelines</div>
+        <div class="tier-item"><span class="check">&#10003;</span> Website modernization (Next.js)</div>
+        <div class="tier-item"><span class="check">&#10003;</span> SEO optimization (3 months)</div>
+        <div class="tier-item excluded"><span class="x">—</span> Social media strategy</div>
+        <div class="tier-item excluded"><span class="x">—</span> Competitor research</div>
+        <div class="tier-item excluded"><span class="x">—</span> Analytics setup</div>
+      </div>
+    </div>
+    <!-- Growth -->
+    <div class="tier featured" data-tier="growth" onclick="selectTier('growth')">
+      <div class="tier-name">Growth</div>
+      <div class="tier-desc">Everything in Foundation plus social media to drive traffic to your new site.</div>
+      <div class="tier-price">$6,700</div>
+      <div class="tier-price-note">One-time project fee</div>
+      <div class="tier-items">
+        <div class="tier-item"><span class="check">&#10003;</span> Brand identity and guidelines</div>
+        <div class="tier-item"><span class="check">&#10003;</span> Website modernization (Next.js)</div>
+        <div class="tier-item"><span class="check">&#10003;</span> SEO optimization (3 months)</div>
+        <div class="tier-item"><span class="check">&#10003;</span> Social media strategy (3 months)</div>
+        <div class="tier-item excluded"><span class="x">—</span> Competitor research</div>
+        <div class="tier-item excluded"><span class="x">—</span> Analytics setup</div>
+      </div>
+      <div class="tier-retainer">+ $350/mo retainer available</div>
+    </div>
+    <!-- Full -->
+    <div class="tier" data-tier="full" onclick="selectTier('full')">
+      <div class="tier-name">Full Transformation</div>
+      <div class="tier-desc">The complete digital overhaul — every workstream, maximum impact.</div>
+      <div class="tier-price">$7,700</div>
+      <div class="tier-price-note">One-time project fee</div>
+      <div class="tier-items">
+        <div class="tier-item"><span class="check">&#10003;</span> Brand identity and guidelines</div>
+        <div class="tier-item"><span class="check">&#10003;</span> Website modernization (Next.js)</div>
+        <div class="tier-item"><span class="check">&#10003;</span> SEO optimization (3 months)</div>
+        <div class="tier-item"><span class="check">&#10003;</span> Social media strategy (3 months)</div>
+        <div class="tier-item"><span class="check">&#10003;</span> Competitor research and positioning</div>
+        <div class="tier-item"><span class="check">&#10003;</span> Analytics and tracking setup</div>
+      </div>
+      <div class="tier-retainer">+ $350/mo retainer available</div>
+    </div>
+  </div>
+ 
+  <!-- Custom builder -->
+  <div class="builder reveal">
+    <h3>Or build your own package</h3>
+    <p class="builder-desc">Toggle individual services on and off to create a custom engagement.</p>
+    <div class="builder-items">
+      <div class="builder-item active" data-service="brand" data-price="700" onclick="toggleService(this)">
+        <div class="builder-item-left"><div class="builder-toggle">&#10003;</div><span class="builder-item-name">Brand identity and guidelines</span></div>
+        <span class="builder-item-price">$700</span>
+      </div>
+      <div class="builder-item active" data-service="website" data-price="4500" onclick="toggleService(this)">
+        <div class="builder-item-left"><div class="builder-toggle">&#10003;</div><span class="builder-item-name">Website modernization (Next.js rebuild)</span></div>
+        <span class="builder-item-price">$4,500</span>
+      </div>
+      <div class="builder-item active" data-service="seo" data-price="1000" onclick="toggleService(this)">
+        <div class="builder-item-left"><div class="builder-toggle">&#10003;</div><span class="builder-item-name">SEO optimization (3-month strategy)</span></div>
+        <span class="builder-item-price">$1,000</span>
+      </div>
+      <div class="builder-item" data-service="social" data-price="500" onclick="toggleService(this)">
+        <div class="builder-item-left"><div class="builder-toggle">&#10003;</div><span class="builder-item-name">Social media strategy (3 months)</span></div>
+        <span class="builder-item-price">$500</span>
+      </div>
+      <div class="builder-item" data-service="competitor" data-price="500" onclick="toggleService(this)">
+        <div class="builder-item-left"><div class="builder-toggle">&#10003;</div><span class="builder-item-name">Competitor research and positioning</span></div>
+        <span class="builder-item-price">$500</span>
+      </div>
+      <div class="builder-item" data-service="analytics" data-price="500" onclick="toggleService(this)">
+        <div class="builder-item-left"><div class="builder-toggle">&#10003;</div><span class="builder-item-name">Analytics and tracking setup</span></div>
+        <span class="builder-item-price">$500</span>
+      </div>
+    </div>
+    <div class="builder-total">
+      <span class="builder-total-label">Your custom total</span>
+      <span class="builder-total-amount" id="customTotal">$6,200</span>
+    </div>
+  </div>
+ 
+  <!-- Payment options -->
+  <div style="margin-top:3rem">
+    <h3 class="reveal" style="font-family:var(--font-display);font-size:1.4rem;margin-bottom:0.5rem">Flexible payment options</h3>
+    <p class="reveal reveal-delay-1" style="font-size:0.9rem;color:var(--text-secondary);margin-bottom:0.5rem">Based on your selected total of <strong id="paymentRefTotal">$6,200</strong></p>
+    <div class="payment-options reveal reveal-delay-2">
+      <div class="payment-card" onclick="selectPayment(this)">
+        <div class="payment-name">Milestone payments</div>
+        <div class="payment-detail">40% deposit to start, 30% at design approval, 30% at launch.</div>
+        <div class="payment-breakdown" id="milestoneBreakdown">
+          <div class="payment-breakdown-row"><span>Deposit (40%)</span><span>$2,480</span></div>
+          <div class="payment-breakdown-row"><span>Design approval (30%)</span><span>$1,860</span></div>
+          <div class="payment-breakdown-row"><span>Launch (30%)</span><span>$1,860</span></div>
+        </div>
+      </div>
+      <div class="payment-card" onclick="selectPayment(this)">
+        <div class="payment-name">3 monthly installments</div>
+        <div class="payment-detail">Equal payments over 3 months, starting at project kick-off.</div>
+        <div class="payment-breakdown" id="installmentBreakdown">
+          <div class="payment-breakdown-row"><span>Month 1</span><span>$2,067</span></div>
+          <div class="payment-breakdown-row"><span>Month 2</span><span>$2,067</span></div>
+          <div class="payment-breakdown-row"><span>Month 3</span><span>$2,066</span></div>
+        </div>
+      </div>
+      <div class="payment-card has-badge" onclick="selectPayment(this)">
+        <div class="payment-name">Pay in full</div>
+        <div class="payment-detail">Single upfront payment with a 10% discount applied.</div>
+        <div class="payment-breakdown" id="fullPayBreakdown">
+          <div class="payment-breakdown-row"><span>Total</span><span><s style="color:var(--text-muted)">$6,200</s></span></div>
+          <div class="payment-breakdown-row" style="font-weight:600;color:var(--stride-teal)"><span>You pay</span><span>$5,580</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+  <!-- Retainer note -->
+  <div class="reveal" style="margin-top:2rem;padding:1.25rem;background:var(--gold-light);border-radius:12px;border-left:3px solid var(--gold)">
+    <p style="font-size:0.88rem;color:#8B6914;font-weight:600;margin-bottom:0.4rem">Monthly retainer — $350/month</p>
+    <p style="font-size:0.82rem;color:var(--text-secondary);line-height:1.7">Available with Growth and Full Transformation packages. Includes site maintenance and bug fixes, monthly SEO monitoring and reporting, content updates (blog posts, page edits), and performance analytics dashboard. Month-to-month — no long-term commitment required.</p>
+  </div>
+</div>
+</section>
+ 
+<!-- ============ CTA ============ -->
+<section class="cta-section">
+  <div class="container">
+    <h2 class="reveal">Ready to transform Stride ERP's digital presence?</h2>
+    <p class="reveal reveal-delay-1">Let's schedule a quick alignment call to finalize scope and kick off within the week.</p>
+    <a href="mailto:david@dotxlabs.com?subject=Stride%20ERP%20Proposal%20—%20Let's%20Go&body=Hi%20David%2C%0A%0AI've%20reviewed%20the%20proposal%20and%20I'd%20like%20to%20discuss%20next%20steps.%0A%0A" class="cta-btn reveal reveal-delay-2">Let's talk → </a>
+ 
+  </div>
+</section>
+ 
+<!-- ============ FOOTER ============ -->
+<footer class="proposal-footer">
+  <p class="footer-brand">DOTxLabs</p>
+  <p class="footer-contact">David Ajai &nbsp;·&nbsp; 647-460-3641 &nbsp;·&nbsp; david@dotxlabs.com &nbsp;·&nbsp; dotxlabs.com</p>
+</footer>
+ 
+<script>
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+ 
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+ 
+// Phase accordion
+document.querySelectorAll('[data-phase]').forEach(phase => {
+  phase.querySelector('.phase-header').addEventListener('click', () => {
+    const wasOpen = phase.classList.contains('open');
+    document.querySelectorAll('[data-phase]').forEach(p => p.classList.remove('open'));
+    if (!wasOpen) phase.classList.add('open');
+  });
+});
+ 
+// Tier selection
+function selectTier(tierName) {
+  document.querySelectorAll('.tier').forEach(t => t.classList.remove('selected'));
+  document.querySelector(`[data-tier="${tierName}"]`).classList.add('selected');
+ 
+  const tiers = {
+    foundation: ['brand', 'website', 'seo'],
+    growth: ['brand', 'website', 'seo', 'social'],
+    full: ['brand', 'website', 'seo', 'social', 'competitor', 'analytics']
+  };
+ 
+  document.querySelectorAll('.builder-item').forEach(item => {
+    const service = item.dataset.service;
+    if (tiers[tierName].includes(service)) {
+      item.classList.add('active');
+    } else {
+      item.classList.remove('active');
+    }
+  });
+  updateTotal();
+}
+ 
+// Toggle service
+function toggleService(el) {
+  el.classList.toggle('active');
+  document.querySelectorAll('.tier').forEach(t => t.classList.remove('selected'));
+  updateTotal();
+}
+ 
+// Update total
+function updateTotal() {
+  let total = 0;
+  document.querySelectorAll('.builder-item.active').forEach(item => {
+    total += parseInt(item.dataset.price);
+  });
+ 
+  document.getElementById('customTotal').textContent = '$' + total.toLocaleString();
+  document.getElementById('paymentRefTotal').innerHTML = '<strong>$' + total.toLocaleString() + '</strong>';
+ 
+  // Milestone
+  const dep = Math.round(total * 0.4);
+  const mid = Math.round(total * 0.3);
+  const fin = total - dep - mid;
+  document.getElementById('milestoneBreakdown').innerHTML =
+    `<div class="payment-breakdown-row"><span>Deposit (40%)</span><span>$${dep.toLocaleString()}</span></div>
+     <div class="payment-breakdown-row"><span>Design approval (30%)</span><span>$${mid.toLocaleString()}</span></div>
+     <div class="payment-breakdown-row"><span>Launch (30%)</span><span>$${fin.toLocaleString()}</span></div>`;
+ 
+  // Installments
+  const inst = Math.round(total / 3);
+  const instLast = total - inst * 2;
+  document.getElementById('installmentBreakdown').innerHTML =
+    `<div class="payment-breakdown-row"><span>Month 1</span><span>$${inst.toLocaleString()}</span></div>
+     <div class="payment-breakdown-row"><span>Month 2</span><span>$${inst.toLocaleString()}</span></div>
+     <div class="payment-breakdown-row"><span>Month 3</span><span>$${instLast.toLocaleString()}</span></div>`;
+ 
+  // Full pay
+  const discounted = Math.round(total * 0.9);
+  document.getElementById('fullPayBreakdown').innerHTML =
+    `<div class="payment-breakdown-row"><span>Total</span><span><s style="color:var(--text-muted)">$${total.toLocaleString()}</s></span></div>
+     <div class="payment-breakdown-row" style="font-weight:600;color:var(--stride-teal)"><span>You pay</span><span>$${discounted.toLocaleString()}</span></div>`;
+}
+ 
+// Payment selection
+function selectPayment(el) {
+  document.querySelectorAll('.payment-card').forEach(c => c.classList.remove('selected'));
+  el.classList.add('selected');
+}
+ 
+// Init
+updateTotal();
+</script>
+</body>
+</html>
