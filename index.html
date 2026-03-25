@@ -215,13 +215,137 @@ section.alt-bg{background:var(--bg-surface)}
 .footer-contact{font-size:0.85rem;color:var(--text-muted)}
  
 /* Mobile */
+/* Mobile timeline fallback */
+.timeline-mobile{display:none;margin-top:2rem}
+.tl-mobile-item{display:flex;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--border-light)}
+.tl-mobile-item:last-child{border-bottom:none}
+.tl-mobile-num{width:32px;height:32px;border-radius:8px;background:var(--stride-deep);color:#fff;display:flex;align-items:center;justify-content:center;font-size:0.8rem;font-weight:700;flex-shrink:0}
+.tl-mobile-num.ongoing{background:var(--stride-teal);color:var(--stride-deep)}
+.tl-mobile-info h4{font-size:0.9rem;font-weight:600;color:var(--text-primary);margin-bottom:0.15rem}
+.tl-mobile-info span{font-size:0.78rem;color:var(--text-muted)}
+ 
+/* Before/after toggle (mobile) */
+.ba-toggle{display:none;margin-bottom:1rem}
+.ba-toggle-wrap{display:flex;background:var(--border-light);border-radius:100px;padding:3px;gap:0}
+.ba-toggle-btn{flex:1;padding:0.6rem 1rem;border:none;border-radius:100px;font-size:0.82rem;font-weight:600;cursor:pointer;transition:all 0.2s;background:transparent;color:var(--text-muted);font-family:var(--font-body)}
+.ba-toggle-btn.active-before{background:rgba(232,93,93,0.12);color:var(--danger)}
+.ba-toggle-btn.active-after{background:rgba(46,196,182,0.12);color:var(--stride-teal)}
+ 
+/* Pricing accordion (mobile) */
+.pricing-accordion{display:none;flex-direction:column;gap:0.75rem;margin-top:2rem}
+.acc-tier{border:1.5px solid var(--border-light);border-radius:14px;overflow:hidden;background:var(--bg-white)}
+.acc-tier.featured{border-color:var(--stride-blue)}
+.acc-tier-header{display:flex;align-items:center;justify-content:space-between;padding:1.1rem 1.25rem;cursor:pointer;user-select:none}
+.acc-tier-left{display:flex;flex-direction:column;gap:0.15rem}
+.acc-tier-name{font-family:var(--font-display);font-size:1.15rem;color:var(--text-primary)}
+.acc-tier-price{font-family:var(--font-display);font-size:1.3rem;color:var(--stride-teal)}
+.acc-tier-badge{font-size:0.65rem;font-weight:600;color:#fff;background:var(--stride-blue);padding:3px 10px;border-radius:100px;text-transform:uppercase;letter-spacing:0.06em;align-self:flex-start}
+.acc-tier-arrow{font-size:0.7rem;color:var(--text-muted);transition:transform 0.3s}
+.acc-tier.open .acc-tier-arrow{transform:rotate(180deg)}
+.acc-tier-body{max-height:0;overflow:hidden;transition:max-height 0.4s ease}
+.acc-tier.open .acc-tier-body{max-height:500px}
+.acc-tier-body-inner{padding:0 1.25rem 1.25rem;border-top:1px solid var(--border-light);padding-top:1rem}
+.acc-tier-desc{font-size:0.82rem;color:var(--text-secondary);margin-bottom:0.75rem;line-height:1.6}
+.acc-tier-items{display:flex;flex-direction:column;gap:0.5rem}
+.acc-tier-item{display:flex;align-items:center;gap:0.5rem;font-size:0.85rem;color:var(--text-secondary)}
+.acc-tier-item .check{color:var(--stride-teal);font-weight:700}
+.acc-tier-item .x{color:var(--text-muted);font-size:0.75rem}
+.acc-tier-item.excluded{opacity:0.35}
+.acc-tier-retainer{margin-top:0.75rem;padding:0.5rem 0.75rem;background:var(--gold-light);border-radius:8px;font-size:0.75rem;color:var(--gold);font-weight:500;text-align:center}
+.acc-tier-select{margin-top:0.75rem;width:100%;padding:0.7rem;border:1.5px solid var(--stride-teal);background:transparent;color:var(--stride-teal);border-radius:10px;font-size:0.85rem;font-weight:600;cursor:pointer;font-family:var(--font-body);transition:all 0.2s}
+.acc-tier-select:active{background:var(--stride-teal);color:#fff}
+ 
+/* Builder horizontal scroll (mobile) */
+.builder-scroll{display:none}
+ 
 @media(max-width:768px){
-  .hero-meta{flex-direction:column;gap:1.5rem}
+  /* Global padding */
+  .container{padding:0 1.5rem}
+  section{padding:4rem 0}
+ 
+  /* Hero */
+  .hero{min-height:auto;padding:6rem 0 4rem}
+  .hero h1{font-size:clamp(1.8rem,8vw,2.6rem)}
+  .hero-sub{font-size:0.95rem}
+  .hero-meta{flex-direction:column;gap:1.25rem}
+ 
+  /* Section titles */
+  .section-title{font-size:clamp(1.6rem,6vw,2.2rem)}
+  .section-desc{font-size:0.95rem}
+ 
+  /* Outcome cards — 2 per row */
+  .outcomes-grid{grid-template-columns:1fr 1fr;gap:1rem}
+  .outcome-card{padding:1.25rem}
+  .outcome-icon{width:40px;height:40px;font-size:1rem;margin-bottom:0.75rem}
+  .outcome-card h3{font-size:0.9rem}
+  .outcome-card p{font-size:0.8rem}
+ 
+  /* Before/after toggle */
+  .ba-toggle{display:block}
+  .ba-container{grid-template-columns:1fr}
+  .ba-panel{display:none}
+  .ba-panel.mobile-visible{display:block}
+ 
+  /* ROI — 2 per row */
+  .roi-grid{grid-template-columns:1fr 1fr;gap:1rem}
+  .roi-card{padding:1.25rem}
+  .roi-metric{font-size:1.6rem}
+  .roi-label{font-size:0.78rem}
+  .roi-detail{font-size:0.72rem}
+ 
+  /* Phases */
+  .phase-header{padding:1rem 1.1rem}
+  .phase-num{width:30px;height:30px;font-size:0.75rem}
+  .phase-info h3{font-size:0.9rem}
+  .phase-body-inner{padding:0 1.1rem 1.1rem;padding-top:1rem}
+  .phase-outcome{font-size:0.85rem}
+ 
+  /* Timeline — show mobile, hide desktop */
+  .timeline-visual{display:none !important}
+  .timeline-mobile{display:block}
+ 
+  /* Pricing — accordion on mobile, hide desktop tiers */
+  .pricing-tiers{display:none !important}
+  .pricing-accordion{display:flex}
+ 
+  /* Builder — horizontal scroll */
+  .builder-items{display:none}
+  .builder-scroll{display:flex;gap:0.75rem;overflow-x:auto;padding-bottom:0.75rem;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
+  .builder-scroll::-webkit-scrollbar{height:4px}
+  .builder-scroll::-webkit-scrollbar-thumb{background:var(--border-light);border-radius:100px}
+  .builder-scroll-card{min-width:160px;flex-shrink:0;scroll-snap-align:start;border:1.5px solid var(--border-light);border-radius:12px;padding:1rem;text-align:center;cursor:pointer;transition:all 0.2s;user-select:none}
+  .builder-scroll-card.active{border-color:var(--stride-teal);background:rgba(46,196,182,0.04)}
+  .builder-scroll-card-icon{width:20px;height:20px;border-radius:5px;border:2px solid var(--border-light);margin:0 auto 0.6rem;display:flex;align-items:center;justify-content:center;font-size:0.7rem;color:transparent;transition:all 0.2s}
+  .builder-scroll-card.active .builder-scroll-card-icon{background:var(--stride-teal);border-color:var(--stride-teal);color:#fff}
+  .builder-scroll-card-name{font-size:0.8rem;font-weight:500;color:var(--text-primary);margin-bottom:0.4rem;line-height:1.3}
+  .builder-scroll-card-price{font-size:0.9rem;font-weight:600;color:var(--stride-deep)}
+ 
+  /* Payment — 2 per row */
+  .payment-options{grid-template-columns:1fr 1fr;gap:0.75rem}
+  .payment-card{padding:1rem}
+  .payment-name{font-size:0.85rem}
+  .payment-detail{font-size:0.75rem}
+  .payment-breakdown-row{font-size:0.72rem}
+ 
+  /* Builder total */
+  .builder-total{padding:1rem 1.25rem}
+  .builder-total-amount{font-size:1.6rem}
+  .builder h3{font-size:1.2rem}
+  .builder-desc{font-size:0.82rem}
+  .builder{padding:1.5rem}
+ 
+  /* CTA */
+  .cta-section{padding:4rem 0}
+  .cta-section h2{font-size:clamp(1.5rem,6vw,2rem)}
+  .cta-btn{padding:0.85rem 2rem;font-size:0.9rem}
+}
+ 
+@media(max-width:380px){
+  .container{padding:0 1.25rem}
   .outcomes-grid{grid-template-columns:1fr}
-  .roi-grid{grid-template-columns:1fr 1fr}
-  .pricing-tiers{grid-template-columns:1fr}
-  .timeline-visual{display:none}
+  .roi-grid{grid-template-columns:1fr}
   .payment-options{grid-template-columns:1fr}
+  .hero h1{font-size:1.6rem}
 }
 </style>
 </head>
@@ -283,9 +407,14 @@ section.alt-bg{background:var(--bg-surface)}
   <p class="section-label reveal">The transformation</p>
   <h2 class="section-title reveal reveal-delay-1">What your digital presence could look like</h2>
   <p class="section-desc reveal reveal-delay-2">A side-by-side comparison of where Stride ERP's website is today versus where we will take it.</p>
+  <div class="ba-toggle reveal reveal-delay-3">
+    <div class="ba-toggle-wrap">
+      <button class="ba-toggle-btn active-before" onclick="toggleBA('before',this)">Current site</button>
+      <button class="ba-toggle-btn" onclick="toggleBA('after',this)">After DOTxLabs</button>
+    </div>
+  </div>
   <div class="ba-container reveal reveal-delay-3">
-    <!-- Before -->
-    <div class="ba-panel">
+    <div class="ba-panel mobile-visible" id="ba-before">
       <div class="ba-label before">Current site</div>
       <div class="ba-content before-content">
         <div class="mock-old">
@@ -314,8 +443,7 @@ section.alt-bg{background:var(--bg-surface)}
         </div>
       </div>
     </div>
-    <!-- After -->
-    <div class="ba-panel">
+    <div class="ba-panel" id="ba-after">
       <div class="ba-label after">After DOTxLabs</div>
       <div class="ba-content after-content">
         <div class="mock-new">
@@ -500,10 +628,14 @@ section.alt-bg{background:var(--bg-surface)}
       <div class="tl-cell" style="grid-column:span 3;text-align:center;font-size:0.8rem;color:var(--stride-teal);font-weight:500;border-bottom:1px solid var(--border-light);background:rgba(46,196,182,0.04)">→ &nbsp;Ongoing after launch (retainer)</div>
     </div>
   </div>
+  <div class="timeline-mobile">
+    <div class="tl-mobile-item"><div class="tl-mobile-num">1</div><div class="tl-mobile-info"><h4>Brand identity + Competitor research</h4><span>Foundation work — visual identity and market positioning</span></div></div>
+    <div class="tl-mobile-item"><div class="tl-mobile-num">2</div><div class="tl-mobile-info"><h4>Website build begins</h4><span>Design, development, and content migration on Next.js</span></div></div>
+    <div class="tl-mobile-item"><div class="tl-mobile-num">3</div><div class="tl-mobile-info"><h4>Website launch + Analytics setup</h4><span>Final QA, deployment, and tracking implementation</span></div></div>
+    <div class="tl-mobile-item"><div class="tl-mobile-num ongoing">→</div><div class="tl-mobile-info"><h4>SEO + Social media</h4><span>Ongoing after launch as monthly retainer work</span></div></div>
+  </div>
 </div>
 </section>
- 
-<!-- ============ PRICING ============ -->
 <section class="alt-bg" id="pricing">
 <div class="container">
   <p class="section-label reveal">Investment</p>
@@ -560,6 +692,66 @@ section.alt-bg{background:var(--bg-surface)}
     </div>
   </div>
  
+  <!-- Mobile pricing accordion -->
+  <div class="pricing-accordion">
+    <div class="acc-tier" data-acc-tier="foundation">
+      <div class="acc-tier-header" onclick="toggleAccTier(this.parentElement)">
+        <div class="acc-tier-left"><div class="acc-tier-name">Foundation</div><div class="acc-tier-price">$6,200</div></div>
+        <span class="acc-tier-arrow">▼</span>
+      </div>
+      <div class="acc-tier-body"><div class="acc-tier-body-inner">
+        <div class="acc-tier-desc">Brand, website, and SEO — the essential digital foundation.</div>
+        <div class="acc-tier-items">
+          <div class="acc-tier-item"><span class="check">&#10003;</span> Brand identity</div>
+          <div class="acc-tier-item"><span class="check">&#10003;</span> Website modernization</div>
+          <div class="acc-tier-item"><span class="check">&#10003;</span> SEO optimization</div>
+          <div class="acc-tier-item excluded"><span class="x">—</span> Social media</div>
+          <div class="acc-tier-item excluded"><span class="x">—</span> Competitor research</div>
+          <div class="acc-tier-item excluded"><span class="x">—</span> Analytics setup</div>
+        </div>
+        <button class="acc-tier-select" onclick="selectTier('foundation')">Select Foundation</button>
+      </div></div>
+    </div>
+    <div class="acc-tier featured" data-acc-tier="growth">
+      <div class="acc-tier-header" onclick="toggleAccTier(this.parentElement)">
+        <div class="acc-tier-left"><div class="acc-tier-badge">Recommended</div><div class="acc-tier-name">Growth</div><div class="acc-tier-price">$6,700</div></div>
+        <span class="acc-tier-arrow">▼</span>
+      </div>
+      <div class="acc-tier-body"><div class="acc-tier-body-inner">
+        <div class="acc-tier-desc">Everything in Foundation plus social media to drive traffic.</div>
+        <div class="acc-tier-items">
+          <div class="acc-tier-item"><span class="check">&#10003;</span> Brand identity</div>
+          <div class="acc-tier-item"><span class="check">&#10003;</span> Website modernization</div>
+          <div class="acc-tier-item"><span class="check">&#10003;</span> SEO optimization</div>
+          <div class="acc-tier-item"><span class="check">&#10003;</span> Social media strategy</div>
+          <div class="acc-tier-item excluded"><span class="x">—</span> Competitor research</div>
+          <div class="acc-tier-item excluded"><span class="x">—</span> Analytics setup</div>
+        </div>
+        <div class="acc-tier-retainer">+ $350/mo retainer available</div>
+        <button class="acc-tier-select" onclick="selectTier('growth')">Select Growth</button>
+      </div></div>
+    </div>
+    <div class="acc-tier" data-acc-tier="full">
+      <div class="acc-tier-header" onclick="toggleAccTier(this.parentElement)">
+        <div class="acc-tier-left"><div class="acc-tier-name">Full Transformation</div><div class="acc-tier-price">$7,700</div></div>
+        <span class="acc-tier-arrow">▼</span>
+      </div>
+      <div class="acc-tier-body"><div class="acc-tier-body-inner">
+        <div class="acc-tier-desc">The complete digital overhaul — every workstream, maximum impact.</div>
+        <div class="acc-tier-items">
+          <div class="acc-tier-item"><span class="check">&#10003;</span> Brand identity</div>
+          <div class="acc-tier-item"><span class="check">&#10003;</span> Website modernization</div>
+          <div class="acc-tier-item"><span class="check">&#10003;</span> SEO optimization</div>
+          <div class="acc-tier-item"><span class="check">&#10003;</span> Social media strategy</div>
+          <div class="acc-tier-item"><span class="check">&#10003;</span> Competitor research</div>
+          <div class="acc-tier-item"><span class="check">&#10003;</span> Analytics setup</div>
+        </div>
+        <div class="acc-tier-retainer">+ $350/mo retainer available</div>
+        <button class="acc-tier-select" onclick="selectTier('full')">Select Full Transformation</button>
+      </div></div>
+    </div>
+  </div>
+ 
   <!-- Custom builder -->
   <div class="builder reveal">
     <h3>Or build your own package</h3>
@@ -589,6 +781,14 @@ section.alt-bg{background:var(--bg-surface)}
         <div class="builder-item-left"><div class="builder-toggle">&#10003;</div><span class="builder-item-name">Analytics and tracking setup</span></div>
         <span class="builder-item-price">$500</span>
       </div>
+    </div>
+    <div class="builder-scroll">
+      <div class="builder-scroll-card active" data-service="brand" data-price="700" onclick="toggleScrollCard(this)"><div class="builder-scroll-card-icon">&#10003;</div><div class="builder-scroll-card-name">Brand identity</div><div class="builder-scroll-card-price">$700</div></div>
+      <div class="builder-scroll-card active" data-service="website" data-price="4500" onclick="toggleScrollCard(this)"><div class="builder-scroll-card-icon">&#10003;</div><div class="builder-scroll-card-name">Website rebuild</div><div class="builder-scroll-card-price">$4,500</div></div>
+      <div class="builder-scroll-card active" data-service="seo" data-price="1000" onclick="toggleScrollCard(this)"><div class="builder-scroll-card-icon">&#10003;</div><div class="builder-scroll-card-name">SEO optimization</div><div class="builder-scroll-card-price">$1,000</div></div>
+      <div class="builder-scroll-card" data-service="social" data-price="500" onclick="toggleScrollCard(this)"><div class="builder-scroll-card-icon">&#10003;</div><div class="builder-scroll-card-name">Social media</div><div class="builder-scroll-card-price">$500</div></div>
+      <div class="builder-scroll-card" data-service="competitor" data-price="500" onclick="toggleScrollCard(this)"><div class="builder-scroll-card-icon">&#10003;</div><div class="builder-scroll-card-name">Competitor research</div><div class="builder-scroll-card-price">$500</div></div>
+      <div class="builder-scroll-card" data-service="analytics" data-price="500" onclick="toggleScrollCard(this)"><div class="builder-scroll-card-icon">&#10003;</div><div class="builder-scroll-card-name">Analytics setup</div><div class="builder-scroll-card-price">$500</div></div>
     </div>
     <div class="builder-total">
       <span class="builder-total-label">Your custom total</span>
@@ -744,8 +944,59 @@ function selectPayment(el) {
   el.classList.add('selected');
 }
  
+// Before/after toggle (mobile)
+function toggleBA(view, btn) {
+  document.querySelectorAll('.ba-toggle-btn').forEach(b => { b.className = 'ba-toggle-btn'; });
+  btn.classList.add(view === 'before' ? 'active-before' : 'active-after');
+  document.getElementById('ba-before').classList.toggle('mobile-visible', view === 'before');
+  document.getElementById('ba-after').classList.toggle('mobile-visible', view === 'after');
+}
+ 
+// Pricing accordion (mobile)
+function toggleAccTier(el) {
+  const wasOpen = el.classList.contains('open');
+  document.querySelectorAll('.acc-tier').forEach(t => t.classList.remove('open'));
+  if (!wasOpen) el.classList.add('open');
+}
+ 
+// Builder scroll cards (mobile) — sync with desktop toggles
+function toggleScrollCard(el) {
+  el.classList.toggle('active');
+  const service = el.dataset.service;
+  const desktopItem = document.querySelector(`.builder-item[data-service="${service}"]`);
+  if (desktopItem) {
+    if (el.classList.contains('active')) {
+      desktopItem.classList.add('active');
+    } else {
+      desktopItem.classList.remove('active');
+    }
+  }
+  document.querySelectorAll('.tier').forEach(t => t.classList.remove('selected'));
+  updateTotal();
+}
+ 
+// Sync scroll cards when tier is selected
+const origSelectTier = selectTier;
+selectTier = function(tierName) {
+  origSelectTier(tierName);
+  const tiers = {
+    foundation: ['brand', 'website', 'seo'],
+    growth: ['brand', 'website', 'seo', 'social'],
+    full: ['brand', 'website', 'seo', 'social', 'competitor', 'analytics']
+  };
+  document.querySelectorAll('.builder-scroll-card').forEach(card => {
+    const service = card.dataset.service;
+    if (tiers[tierName].includes(service)) {
+      card.classList.add('active');
+    } else {
+      card.classList.remove('active');
+    }
+  });
+};
+ 
 // Init
 updateTotal();
 </script>
 </body>
 </html>
+ 
