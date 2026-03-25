@@ -116,6 +116,15 @@ section.alt-bg{background:var(--bg-surface)}
 .mock-new-wins{margin-top:12px;display:flex;flex-direction:column;gap:6px}
 .mock-new-win{display:flex;align-items:center;gap:8px;font-size:11px;color:var(--stride-teal);background:rgba(46,196,182,0.06);padding:6px 10px;border-radius:6px;border-left:3px solid var(--stride-teal)}
  
+/* Cost of inaction */
+.cost-grid{display:flex;flex-direction:column;gap:1.25rem}
+.cost-item{display:flex;gap:1.25rem;padding:1.5rem;background:var(--bg-white);border:1px solid var(--border-light);border-radius:14px;border-left:3px solid var(--danger);transition:transform 0.3s}
+.cost-item:hover{transform:translateX(4px)}
+.cost-icon-wrap{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1rem;font-weight:700}
+.cost-icon-wrap.danger{background:rgba(232,93,93,0.08);color:var(--danger)}
+.cost-text h4{font-size:1rem;font-weight:600;color:var(--text-primary);margin-bottom:0.35rem}
+.cost-text p{font-size:0.88rem;color:var(--text-secondary);line-height:1.7}
+ 
 /* ROI Section */
 .roi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.25rem;margin-top:2rem}
 .roi-card{background:var(--bg-white);border:1px solid var(--border-light);border-radius:14px;padding:1.75rem;text-align:center;transition:transform 0.3s}
@@ -215,6 +224,28 @@ section.alt-bg{background:var(--bg-surface)}
 .footer-contact{font-size:0.85rem;color:var(--text-muted)}
  
 /* Mobile */
+/* How we work - process */
+.process-grid{display:flex;align-items:flex-start;gap:0;margin-top:2rem}
+.process-step{flex:1;background:var(--bg-white);border:1px solid var(--border-light);border-radius:16px;padding:2rem;transition:transform 0.3s,box-shadow 0.3s}
+.process-step:hover{transform:translateY(-4px);box-shadow:0 20px 60px rgba(10,37,64,0.08)}
+.process-num{width:40px;height:40px;border-radius:10px;background:var(--stride-deep);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1rem;font-weight:700;margin-bottom:1rem}
+.process-step h3{font-size:1.15rem;font-weight:600;margin-bottom:0.5rem;color:var(--text-primary)}
+.process-step p{font-size:0.88rem;color:var(--text-secondary);line-height:1.7;margin-bottom:1rem}
+.process-output{font-size:0.78rem;color:var(--stride-teal);font-weight:500;padding:0.6rem 0.8rem;background:rgba(46,196,182,0.06);border-radius:8px;line-height:1.5}
+.process-connector{display:flex;align-items:center;justify-content:center;color:var(--text-muted);font-size:1.2rem;padding:0 0.75rem;flex-shrink:0;margin-top:3rem}
+ 
+/* Personalized ROI math */
+.roi-math{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:2rem}
+.roi-math-card{background:var(--bg-white);border:1px solid var(--border-light);border-radius:14px;padding:1.5rem;text-align:center}
+.roi-math-card.highlight{background:var(--stride-ice);border-color:var(--stride-teal)}
+.roi-math-label{font-size:0.82rem;color:var(--text-secondary);margin-bottom:0.5rem;line-height:1.5}
+.roi-math-value{font-family:var(--font-display);font-size:2rem;color:var(--stride-teal);margin-bottom:0.4rem}
+.roi-math-note{font-size:0.72rem;color:var(--text-muted);line-height:1.5}
+.roi-math-summary{margin-top:2rem;padding:2rem;background:var(--stride-deep);border-radius:16px;color:#fff}
+.roi-math-summary h3{font-family:var(--font-display);font-size:1.3rem;color:var(--stride-teal);margin-bottom:0.75rem;font-weight:400}
+.roi-math-summary p{font-size:0.95rem;color:rgba(255,255,255,0.75);line-height:1.8}
+.roi-math-summary strong{color:#fff}
+ 
 /* Mobile timeline fallback */
 .timeline-mobile{display:none;margin-top:2rem}
 .tl-mobile-item{display:flex;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--border-light)}
@@ -279,6 +310,31 @@ section.alt-bg{background:var(--bg-surface)}
   .outcome-icon{width:40px;height:40px;font-size:1rem;margin-bottom:0.75rem}
   .outcome-card h3{font-size:0.9rem}
   .outcome-card p{font-size:0.8rem}
+ 
+  /* Cost of inaction mobile */
+  .cost-item{flex-direction:row;gap:1rem;padding:1.1rem}
+  .cost-icon-wrap{width:32px;height:32px;font-size:0.85rem}
+  .cost-text h4{font-size:0.88rem}
+  .cost-text p{font-size:0.8rem}
+ 
+  /* Process mobile */
+  .process-grid{flex-direction:column;gap:0.75rem}
+  .process-connector{display:none}
+  .process-step{padding:1.5rem}
+  .process-num{width:32px;height:32px;font-size:0.85rem}
+  .process-step h3{font-size:1rem}
+  .process-step p{font-size:0.82rem}
+  .process-output{font-size:0.72rem}
+ 
+  /* ROI math mobile */
+  .roi-math{grid-template-columns:1fr 1fr;gap:0.75rem}
+  .roi-math-card{padding:1.1rem}
+  .roi-math-value{font-size:1.5rem}
+  .roi-math-label{font-size:0.75rem}
+  .roi-math-note{font-size:0.68rem}
+  .roi-math-summary{padding:1.5rem}
+  .roi-math-summary h3{font-size:1.1rem}
+  .roi-math-summary p{font-size:0.85rem}
  
   /* Before/after toggle */
   .ba-toggle{display:block}
@@ -354,7 +410,7 @@ section.alt-bg{background:var(--bg-surface)}
 <!-- ============ HERO ============ -->
 <section class="hero">
 <div class="container hero-content">
-  <div class="hero-badge reveal"><span></span> Proposal — March 2026</div>
+  <div class="hero-badge reveal"><span></span> DOTxLabs × Stride ERP</div>
   <h1 class="reveal reveal-delay-1">Your product is <em>powerful.</em><br>Your digital presence should be too.</h1>
   <p class="hero-sub reveal reveal-delay-2">A comprehensive digital transformation proposal for Stride ERP — from brand identity to a modern website, SEO, social media strategy, and sustainable growth.</p>
   <div class="hero-meta reveal reveal-delay-3">
@@ -402,7 +458,7 @@ section.alt-bg{background:var(--bg-surface)}
 </section>
  
 <!-- ============ BEFORE / AFTER ============ -->
-<section class="alt-bg">
+<section>
 <div class="container">
   <p class="section-label reveal">The transformation</p>
   <h2 class="section-title reveal reveal-delay-1">What your digital presence could look like</h2>
@@ -636,6 +692,75 @@ section.alt-bg{background:var(--bg-surface)}
   </div>
 </div>
 </section>
+ 
+<!-- ============ HOW WE WORK ============ -->
+<section class="alt-bg">
+<div class="container">
+  <p class="section-label reveal">How we work</p>
+  <h2 class="section-title reveal reveal-delay-1">Three phases. Zero guesswork.</h2>
+  <p class="section-desc reveal reveal-delay-2">We follow a structured process that keeps you informed at every step — no surprises, no scope creep, no ghosting.</p>
+  <div class="process-grid reveal reveal-delay-3">
+    <div class="process-step">
+      <div class="process-num">1</div>
+      <h3>Research</h3>
+      <p>We audit your current site, analyze competitors, study your market, and define the strategy before a single pixel is designed. Every decision is grounded in data, not assumptions.</p>
+      <div class="process-output">You receive: Competitor audit, brand strategy brief, site architecture plan</div>
+    </div>
+    <div class="process-connector">→</div>
+    <div class="process-step">
+      <div class="process-num">2</div>
+      <h3>Build</h3>
+      <p>Brand identity is established first, then applied to a modern, fast website built on Next.js. You review and approve at every milestone — nothing goes live without your sign-off.</p>
+      <div class="process-output">You receive: Brand kit, website design mockups, fully built site on staging</div>
+    </div>
+    <div class="process-connector">→</div>
+    <div class="process-step">
+      <div class="process-num">3</div>
+      <h3>Launch + Optimize</h3>
+      <p>Site goes live with analytics, SEO foundations, and tracking in place. Then we shift to ongoing optimization — monitoring performance, producing content, and refining based on real data.</p>
+      <div class="process-output">You receive: Live site, analytics dashboard, monthly performance reports</div>
+    </div>
+  </div>
+</div>
+</section>
+ 
+<!-- ============ PERSONALIZED ROI ============ -->
+<section>
+<div class="container">
+  <p class="section-label reveal">The math</p>
+  <h2 class="section-title reveal reveal-delay-1">How this investment pays for itself</h2>
+  <p class="section-desc reveal reveal-delay-2">Let us do the math using conservative estimates based on Stride ERP's pricing. The numbers speak for themselves.</p>
+  <div class="roi-math reveal reveal-delay-3">
+    <div class="roi-math-card highlight">
+      <div class="roi-math-label">Average Stride ERP client value</div>
+      <div class="roi-math-value">~$100/month</div>
+      <div class="roi-math-note">Conservative estimate based on entry-level Foundation 300 pricing</div>
+    </div>
+    <div class="roi-math-card">
+      <div class="roi-math-label">That means each new client is worth</div>
+      <div class="roi-math-value">$1,200/year</div>
+      <div class="roi-math-note">Annual contract value per client</div>
+    </div>
+    <div class="roi-math-card">
+      <div class="roi-math-label">Additional clients needed to cover the full engagement</div>
+      <div class="roi-math-value">6–7 clients</div>
+      <div class="roi-math-note">Based on the Full Transformation package ($7,700 ÷ $1,200)</div>
+    </div>
+    <div class="roi-math-card highlight">
+      <div class="roi-math-label">Projected additional demos per month with new site</div>
+      <div class="roi-math-value">+20/month</div>
+      <div class="roi-math-note">Conservative 3-5x increase from current ~5 demos/month</div>
+    </div>
+  </div>
+  <div class="roi-math-summary reveal">
+    <div class="roi-math-summary-text">
+      <h3>The bottom line</h3>
+      <p>If the new website, SEO strategy, and brand identity help Stride close just <strong>7 additional clients over the next 12 months</strong>, the entire engagement has paid for itself. Every client after that is pure return. With 20+ additional demo requests per month, reaching 7 new clients is not ambitious — it is conservative.</p>
+    </div>
+  </div>
+</div>
+</section>
+ 
 <section class="alt-bg" id="pricing">
 <div class="container">
   <p class="section-label reveal">Investment</p>
@@ -999,4 +1124,3 @@ updateTotal();
 </script>
 </body>
 </html>
- 
